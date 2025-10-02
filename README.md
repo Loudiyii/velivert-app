@@ -2,7 +2,7 @@
 
 > Plateforme d'analyse temps réel et optimisation multi-techniciens pour le système de vélos en libre-service de Saint-Étienne Métropole
 
-![Status](https://img.shields.io/badge/status-production--ready-green)
+![Status](https://img.shields.io/badge/status-MVP--local-blue)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![React](https://img.shields.io/badge/react-18-61dafb)
@@ -172,7 +172,6 @@ Distance totale: 8.5 km, durée estimée: 1h30min.
   - X stations actualisées
   - Y vélos mis à jour
   - Z mouvements détectés
-- Fonctionne même si le daemon de 5min est arrêté
 
 ### 8️⃣ Interventions de maintenance
 - CRUD complet (Create, Read, Update, Delete)
@@ -193,10 +192,9 @@ Distance totale: 8.5 km, durée estimée: 1h30min.
 
 ## 🔄 Système de collecte données
 
-**Daemon Python** + **Refresh Manuel** (dual approach):
-- **Automatique**: Refresh toutes les 5 minutes en background
-- **Manuel**: Bouton pour actualisation immédiate
-- Fetch GBFS API Saint-Étienne Métropole
+**Refresh Manuel** (user-triggered approach):
+- **Manuel**: Bouton pour actualisation immédiate des données
+- Fetch GBFS API Saint-Étienne Métropole à la demande
 - Upsert stations, vélos, statuts
 - Création snapshots historiques (TimescaleDB)
 - **Détection mouvements automatique:**
@@ -311,8 +309,6 @@ velivert-app/
 │   │   ├── schemas/              # Pydantic validation
 │   │   └── core/                 # Config, auth, DB
 │   ├── alembic/                  # DB migrations
-│   ├── force_refresh_data.py     # Script refresh manuel
-│   ├── auto_refresh_daemon.py    # Daemon 5min
 │   └── requirements.txt
 ├── frontend/
 │   ├── src/
@@ -332,9 +328,9 @@ velivert-app/
 
 ## 📊 Performance
 
-### Actuelles (prod)
+### Actuelles (MVP)
 - ⏱️ API response time: 50-200ms
-- 🔄 Data refresh: Manuel + 5 minutes auto
+- 🔄 Data refresh: Manuel (bouton utilisateur)
 - 📡 Frontend polling: 3-5 minutes
 - 💾 DB size: ~50MB (1 semaine)
 - 🤖 K-means clustering: <1s pour 500 points
@@ -410,7 +406,7 @@ Cette application démontre:
 - Optimisation VRP avancée (OR-Tools)
 - RAG pour documentation technique
 
-**Développé par:** Abder
+**Développé par:** Abderrahim
 **Date:** Octobre 2025
-**Version:** 1.0.0 (Production-Ready)
+**Version:** 1.0.0 (MVP - Local)
 **Assistance IA:** Claude Code (Anthropic)
