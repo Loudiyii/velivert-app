@@ -387,90 +387,6 @@ VITE_API_URL=http://localhost:8000
 VITE_WS_URL=ws://localhost:8000
 ```
 
-## 🎯 Pour l'entretien d'alternance
-
-### Points à présenter
-
-1. **Architecture Software 3.0**
-   - Développé avec assistance IA (Claude Code)
-   - Stack async moderne (FastAPI, React 18)
-   - Patterns éprouvés (Repository, Service layer)
-
-2. **Machine Learning appliqué**
-   - K-means clustering pour optimisation logistique
-   - Score d'équilibrage automatique
-   - Assignation intelligente multi-critères
-
-3. **Temps réel & Performance**
-   - WebSocket + polling intelligent
-   - Refresh manuel + daemon automatique
-   - TimescaleDB pour time-series
-   - Tracking automatique mouvements
-
-4. **Optimisation & Algorithmes**
-   - K-means pour répartition géographique
-   - Nearest Neighbor pour trajets optimaux
-   - Calculs géospatiaux (haversine)
-   - Auto-sélection station optimale
-
-5. **UX & Visualisation**
-   - Cartes interactives multi-couches
-   - Instructions textuelles narratives détaillées
-   - Notifications toast temps réel
-   - Dashboard avec refresh manuel
-
-### Roadmap Production (3 mois)
-
-**Mois 1 - Fondations**
-- ✅ CI/CD pipeline (à implémenter)
-- ✅ Tests unitaires/intégration (à implémenter)
-- ✅ HTTPS + secrets management
-- ✅ Monitoring basique
-
-**Mois 2 - Robustesse**
-- ✅ Rate limiting + validation
-- ✅ Cache Redis actif
-- ✅ Backup automatique
-
-**Mois 3 - Scale & ML**
-- ✅ Load balancer
-- ✅ CDN + compression
-- ✅ ML prédictif (demande future)
-- ✅ Documentation complète
-
-### Démonstration Live
-
-**Scénario type:**
-
-1. **Dashboard** - Montrer le refresh manuel
-   - "Cliquez sur Actualiser → données mises à jour instantanément"
-
-2. **Optimisation Multi-Techniciens**
-   - "46 vélos désactivés détectés"
-   - "Configuration: 3 techniciens (Marc, Julie, Thomas)"
-   - "Algorithme K-means répartit géographiquement"
-   - "Équilibrage: 92% - excellent!"
-
-3. **Instructions détaillées**
-   - "Chaque technicien voit son trajet narratif complet"
-   - "Ordre optimal calculé par Nearest Neighbor"
-
-4. **Carte interactive**
-   - "Couleurs par technicien"
-   - "Lignes de trajet pointillées"
-   - "Zones géographiques claires"
-
-5. **Flux temps réel**
-   - "Notifications popup nouveaux mouvements"
-   - "Liaisons pickups/dropoffs visualisées"
-
-### Questions à poser au recruteur
-
-1. "Votre DSI utilise-t-elle déjà des algorithmes de clustering/optimisation?"
-2. "Quels sont vos outils de monitoring préférés (Datadog, New Relic)?"
-3. "Comment gérez-vous le déploiement graduel des features IA?"
-4. "Quelle est votre stack d'observabilité actuelle?"
-5. "Des projets clients nécessitent-ils de l'optimisation logistique?"
 
 ## 📄 Licence
 
@@ -488,7 +404,7 @@ Cette application démontre:
 - ✅ Visualisation données géospatiales
 - ✅ Architecture scalable et maintenable
 
-**Prête pour alternance 1-2 ans avec évolution vers:**
+**Évolutions futures possibles:**
 - Systèmes multi-agents autonomes
 - ML prédictif (demande, pannes)
 - Optimisation VRP avancée (OR-Tools)
