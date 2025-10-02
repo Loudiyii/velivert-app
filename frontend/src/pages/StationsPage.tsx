@@ -14,6 +14,18 @@ export default function StationsPage() {
   const [lastRefresh, setLastRefresh] = useState<Date>()
   const [viewMode, setViewMode] = useState<ViewMode>('map')
 
+  // Top 5 stations by available bikes
+  const topStations = stations
+    .filter(station => station.is_renting && station.num_bikes_available > 0)
+    .sort((a, b) => b.num_bikes_available - a.num_bikes_available)
+    .slice(0, 5)
+
+  // Bottom 5 stations by available bikes (need potential rebalancing)
+  const bottomStations = stations
+    .filter(station => station.is_renting)
+    .sort((a, b) => a.num_bikes_available - b.num_bikes_available)
+    .slice(0, 5)
+
   useEffect(() => {
     const fetchStations = async (isAutoRefresh = false) => {
       try {
@@ -85,7 +97,68 @@ export default function StationsPage() {
       ) : (
         <>
           {viewMode === 'map' && (
-            <StationMap stations={stations} onStationClick={handleStationClick} />
+            <>
+              <StationMap stations={stations} onStationClick={handleStationClick} />
+
+              {/* Top 5 Stations - Only show in map mode */}
+              {topStations.length > 0 && (
+                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-4 mt-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                    🏆 Top 5 Stations - Plus de vélos disponibles
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    {topStations.map((station, index) => (
+                      <div
+                        key={station.station_id}
+                        className="bg-white rounded-lg p-3 shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+                        onClick={() => handleStationClick(station)}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-2xl font-bold text-yellow-600">#{index + 1}</span>
+                          <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
+                            {station.num_bikes_available} vélos
+                          </span>
+                        </div>
+                        <h4 className="font-medium text-gray-800 text-sm leading-tight">
+                          {station.name}
+                        </h4>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Bottom 5 Stations - Need potential rebalancing */}
+              {bottomStations.length > 0 && (
+                <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-lg p-4 mt-4">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                    ⚠️ Stations nécessitant une requillibration potentielle
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    {bottomStations.map((station, index) => (
+                      <div
+                        key={station.station_id}
+                        className="bg-white rounded-lg p-3 shadow-sm border hover:shadow-md transition-shadow cursor-pointer"
+                        onClick={() => handleStationClick(station)}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-2xl font-bold text-red-600">#{index + 1}</span>
+                          <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">
+                            {station.num_bikes_available} vélos
+                          </span>
+                        </div>
+                        <h4 className="font-medium text-gray-800 text-sm leading-tight">
+                          {station.name}
+                        </h4>
+                        <p className="text-xs text-red-600 mt-1">
+                          Faible disponibilité
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
           {viewMode === 'list' && (
             <StationList stations={stations} onStationClick={handleStationClick} />

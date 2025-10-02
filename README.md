@@ -79,6 +79,7 @@ docker-compose up -d
 - Vue d'ensemble KPIs (total vélos, disponibles, en circulation)
 - Indicateur fraîcheur données (dernière actualisation)
 - **🆕 Bouton refresh manuel** - Force actualisation immédiate des données
+- **🔄 Auto-refresh automatique** - Mise à jour toutes les minutes
 - État connexion WebSocket temps réel
 - Polling automatique toutes les 4 minutes
 - Liens rapides vers autres pages
@@ -114,6 +115,7 @@ Technicien 3 (Zone Est): 25 vélos, 8.8km, 2h35
 ### 3️⃣ Stations & Cartographie
 - Carte interactive Leaflet avec toutes les stations
 - Marqueurs colorés par état (vert=actif, gris=inactif)
+- **🏆 Top 5 stations les plus actives** - Classement en temps réel par nombre de vélos disponibles
 - Popups détaillés:
   - Nom station, capacité
   - Vélos disponibles/désactivés
@@ -409,4 +411,3 @@ Cette application démontre:
 **Développé par:** Abderrahim
 **Date:** Octobre 2025
 **Version:** 1.0.0 (MVP - Local)
-**Assistance IA:** Claude Code (Anthropic)

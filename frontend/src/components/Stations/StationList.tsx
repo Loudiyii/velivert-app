@@ -11,6 +11,7 @@ export default function StationList({ stations, onStationClick }: StationListPro
   const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'inactive'>('all')
   const [sortBy, setSortBy] = useState<'name' | 'bikes' | 'occupancy'>('name')
 
+
   const filteredStations = stations
     .filter((station) => {
       // Search filter
